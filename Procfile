@@ -1,1 +1,1 @@
-web:python3 weather-api.py
+web: gunicorn weather-api:app
