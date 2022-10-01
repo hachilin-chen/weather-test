@@ -1,4 +1,4 @@
-#by josh chen
+#by josh
 from flask import Flask
 import requests
 import xml.etree.ElementTree as et
@@ -10,15 +10,11 @@ app = Flask(__name__)
 def weather(city):
     Key = "CWB-8AA36519-D072-49C3-9342-3A8B8695419C"
     Data_id = "F-C0032-001"
-    
-    cities = ["臺北","新北","桃園","臺中","臺南","高雄","基隆","新竹","嘉義"] #市
-    counties = ["宜蘭","苗栗","彰化","南投","雲林","屏東","花蓮","臺東","澎湖","金門","連江"] #縣
+    counties = ["宜蘭","苗栗","彰化","南投","雲林","屏東","花蓮","臺東","澎湖","金門","連江","臺北","新北","桃園","臺中","臺南","高雄","基隆","新竹","嘉義"] #縣
     showdata = ''
     flagcity = False
     city = city.replace('台','臺')
-    if city in cities:
-        city += '市'
-    elif city in counties:
+    if city in counties:
         city += '縣'
         flagcity = True
     if flagcity:
@@ -47,4 +43,4 @@ def weather(city):
     return showdata
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='127.0.0.1',port='8080', debug=False)
