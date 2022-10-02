@@ -24,16 +24,16 @@ def weather(city):
         root = et.fromstring(report)
         dataset = root.find(xml_namespace + 'dataset')
         locations_info = dataset.findall(xml_namespace + 'location')
-        target_id = -1
+        target_idx = -1
         for idx,ele in enumerate(locations_info):
             locationName = ele[0].text
             if locationName == city:
-                target_id = idx
+                target_idx = idx
                 break
         tlist = ['天氣狀況','最高溫','最低溫','舒適度','降雨機率']
         showdata = '{'
         for i in range(len(tlist)):
-            element =locations_info[target_id][i+1]
+            element =locations_info[target_idx][i+1]
             timeblock = element[1]
             data = timeblock[2][0].text
             showdata = showdata + '"' + tlist[i] + '":"' + data + '",'
