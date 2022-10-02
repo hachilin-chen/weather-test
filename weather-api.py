@@ -37,7 +37,7 @@ def weather(city):
             timeblock = element[1]
             data = timeblock[2][0].text
             showdata = showdata + '"' + tlist[i] + '":"' + data + '",'
-        showdata = showdata[:-1] + '}'
+        showdata = showdata[:-1] + "}"
     else:
         showdata = '不存在'
     return showdata
